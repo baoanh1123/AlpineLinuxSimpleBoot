@@ -1,4 +1,4 @@
-Hey, did you download this file?
+Hey, did you pull thís repository?
 If that's right, here are your instructions.
 First, create a virtual disk using the command truncate -s 100M disk.img.
 Next, format it to the ext4 filesystem using the command: sudo mkfs.ext4 disk.img.
@@ -28,8 +28,6 @@ Make sure to just type poweroff. Don't use the -f option or shut down the VM wit
 To add new packages, you'll use apk add, and to update your repositories, just run apk update.
 
 Should you wish to install GRUB, that's something you'll have to look into yourself, as this guide focuses on simpler steps and won't cover it.
-I've already included a linux-source.tar.gz file for you. You can try building and running it on your own, similar to what we just covered.
-
 Finally, have fun with your crappy system!
 
 ------ BAO ANH ------
