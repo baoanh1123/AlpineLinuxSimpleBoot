@@ -1,4 +1,4 @@
-Hey, did you pull thís repository?
+Hey, did you pull this repository?
 If that's right, here are your instructions.
 First, create a virtual disk using the command truncate -s 100M disk.img.
 Next, format it to the ext4 filesystem using the command: sudo mkfs.ext4 disk.img.
