@@ -1,0 +1,35 @@
+Hey, did you download this file?
+If that's right, here are your instructions.
+First, create a virtual disk using the command truncate -s 100M disk.img.
+Next, format it to the ext4 filesystem using the command: sudo mkfs.ext4 disk.img.
+If you're interested in advanced disk partitioning, you can explore that on your own.
+The next step is to create the mnt directory: mkdir mnt
+Why not use the /mnt directory? Answer: Because I like to.
+After that, use the command: "mount disk.img mnt" to mount it to the mnt directory we just made.
+Once it's mounted, you can extract the rootfs.tar.gz file by running: sudo tar xvf rootfs.tar.gz
+
+Next, copy all the contents from basesystem into your mnt directory using the command: sudo cp -r basesystem/* mnt/
+
+While you could chroot into it on your own, I won't be going into that in this guide.
+
+After that, you'll need to unmount the directory using: sudo umount mnt
+
+You'll need to install QEMU, though I won't cover the installation here since there are so many different distributions.
+Once QEMU is installed, you can use this command to boot up your virtual machine:
+
+qemu-system-x86_64 -kernel precompiled/bzImage -hda disk.img -append "root=/dev/sda rw init=/sbin/init" -m 512M -net nic -net user,hostfwd=tcp::2222-:8022
+
+After booting, you'll see a login screen. Enter root as the username and 123456 as the password.
+
+Should you wish to SSH into it, just open a new terminal and execute the command: ssh baoanh@localhost -p 2222. You'll need to confirm 'yes' and then type in the password 123456.
+
+Make sure to just type poweroff. Don't use the -f option or shut down the VM with Ctrl + C, because doing so could very likely lead to data loss.
+
+To add new packages, you'll use apk add, and to update your repositories, just run apk update.
+
+Should you wish to install GRUB, that's something you'll have to look into yourself, as this guide focuses on simpler steps and won't cover it.
+I've already included a linux-source.tar.gz file for you. You can try building and running it on your own, similar to what we just covered.
+
+Finally, have fun with your crappy system!
+
+------ BAO ANH ------
